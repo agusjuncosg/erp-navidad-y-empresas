@@ -9,7 +9,26 @@ class ChristmasERPApp {
         this.currentUser = "Agustín";
         this.currentRole = "Administrador";
 
-        document.addEventListener("DOMContentLoaded", () => this.init());
+        document.addEventListener("DOMContentLoaded", () => this._boot());
+    }
+
+    async _boot() {
+        // 1. Check for existing session
+        let session = await auth.checkSession();
+
+        // 2. If no session, show login and wait
+        if (!session) {
+            document.getElementById('app-loading').style.display = 'none';
+            await auth.showLoginScreen();
+            document.getElementById('app-loading').style.display = 'flex';
+        }
+
+        // 3. Load all data from Supabase
+        await store.init();
+
+        // 4. Hide loading and start the router
+        document.getElementById('app-loading').style.display = 'none';
+        this.init();
     }
 
     // ─── INICIALIZACIÓN ──────────────────────────────────────────────────────
