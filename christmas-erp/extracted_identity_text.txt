@@ -1,0 +1,233 @@
+
+--- Page 1 ---
+Sistema de identidad visual
+de Navidad y Empresas
+--- Page 2 ---
+Introducción
+En este documento se detalla el sistema de 
+identidad visual de la marca Navidad y 
+Empresas. Es una guía a seguir para el correcto 
+uso del grupo de elementos gráficos que, 
+basado en una plataforma conceptual, 
+acompaña al logotipo y pretende connotar los 
+valores y atributos de la marca a nivel visual.
+Con esta renovación en su estética gráfica, la 
+marca busca fortalecer y realizar un salto de 
+calidad en su imagen, y contribuir a una 
+optimización para poder presentarse en 
+plataformas digitales.
+Por tal motivo se propone un sistema visual 
+moderno, versátil, funcional, coherente, variado 
+y recordable; que pretende lograr identificación 
+tanto con sus clientes actuales como con su 
+nuevo público objetivo.
+--- Page 3 ---
+Atributos de 
+la marca
+� Trayectoria
+� Personalización
+� Flexibilidad
+� Variedad
+� Empatía
+� Distinción
+� Calidad
+� Confianza
+--- Page 4 ---
+La navidad nos suele encontrar unidos. Y de alguna 
+manera, si por algún motivo no podemos estar 
+sentados en la misma mesa en ese día, tratamos de 
+sentirnos cerca de aquellos a quienes queremos. Es 
+uno de los días en los que más veces enviamos 
+buenos deseos. Queremos que todos la pasen bien. 
+Nos une, nos mostramos más empáticos.
+Además, el concepto de unión también se relaciona 
+con el producto en sí mismo: ya que une diferentes 
+opciones y marcas en una misma caja. Y ese 
+conjunto, ese todo, toma mucha más relevancia. Un 
+todo es más que la suma de las partes.
+Concepto: Unión.
+--- Page 5 ---
+/uni0055/uni006E/uni0069/uni006D/uni006F/uni0073/uni0020/uni006C/uni006F/uni0073/uni0020/uni0070/uni0072/uni006F/uni0064/uni0075/uni0063/uni0074/uni006F/uni0073/uni002E/uni0020/uni004E/uni006F/uni0073/uni0020/uni0075/uni006E/uni0069/uni006D/uni006F/uni0073/uni0020/uni0065/uni006E/uni0020/uni006C/uni0061/uni0020/uni006D/uni0065/uni0073/uni0061/uni002E/uni0020
+/uni0045/uni006E/uni0063/uni006F/uni006E/uni0074/uni0072/uni0061/uni006D/uni006F/uni0073/uni0020/uni006C/uni0061/uni0020/uni0066/uni006F/uni0072/uni006D/uni0061/uni0020/uni0064/uni0065/uni0020/uni0065/uni0073/uni0074/uni0061/uni0072/uni0020/uni0063/uni006F/uni006E/uni0020/uni0076/uni006F/uni0073/uni002E
+/uni0052/uni0065/uni0066/uni0065/uni0072/uni0065/uni006E/uni0063/uni0069/uni0061/uni0020/uni0063/uni006F/uni006E/uni0020/uni0066/uni006F/uni0072/uni006D/uni0061/uni0073/uni0020/uni0064/uni0065/uni0020/uni0061/uni0064/uni006F/uni0072/uni006E/uni006F/uni0073/uni0020/uni006E/uni0061/uni0076/uni0069/uni0064/uni0065/uni00F1/uni006F/uni0073/uni002C
+/uni0076/uni0061/uni006A/uni0069/uni006C/uni006C/uni0061/uni002C/uni0020/uni0063/uni0061/uni006A/uni0061/uni0073/uni0020/uni006E/uni0061/uni0076/uni0069/uni0064/uni0065/uni00F1/uni0061/uni0073/uni002C/uni0020/uni00E1/uni0072/uni0062/uni006F/uni006C/uni0020/uni0064/uni0065/uni0020/uni006E/uni0061/uni0076/uni0069/uni0064/uni0061/uni0064/uni002C/uni0020/uni006D/uni006F/uni00F1/uni006F/uni002E
+Representación
+gráfica del concepto
+� Unión
+� Diversidad
+� Lazos
+--- Page 6 ---
+Ajustes de 
+logotipo
+Con el cambio propuesto 
+se intenta sumar: 
+� Simpleza
+� Versatilidad
+� Modernización
+� Reconocimiento
+� Legibilidad
+DISMINUCIÓN DEL CONTRASTE 
+DE TAMAÑO ENTRE MAYÚSCULAS 
+Y MINÚSCULAS
+ANTES
+CAMBIOS SUGERIDOS
+MENOS ORNAMENTO
+PARA RESTAR RUIDO Y
+GANAR ESPACIO
+SEPARACIÓN MÁS CLARA
+DE CADA PALABRA PARA
+FACILITAR LA LECTURA
+PEQUEÑO CAMBIO DE ORIENTACIÓN
+TIPOGRÁFICA PARA RESTAR UN POCO DE 
+INCLINACIÓN Y ASÍ GANAR LEGIBILIDAD
+NUEVO SIGNO GRÁFICO PARA SUMAR RECONOCIMIENTO: 
+LAS ESTRELLAS NOS UNEN Y NOS GUÍAN EN EL CAMINO
+(UNIÓN / DISTRIBUCIÓN).
+--- Page 7 ---
+LOGOTIPO
+SE TRATA DE LA VERSIÓN PRINCIPAL DE LOGOTIPO
+--- Page 8 ---
+C
+A
+JA
+S NA V I D E Ñ AS • P
+E
+R
+SO
+NALIZADAS • 
+VERSIÓN SECUNDARIA DE LOGOTIPO INSIGNIA FAVICON
+SE TRATA DE UNA VERSIÓN MÁS VERTICAL
+QUE LA PRESENTADA ANTERIORMENTE.
+NO REEMPLAZA AL LOGOTIPO SINO QUE SE USA PARA 
+APLICACIONES ESPECIALES, DE MANERA DECORATIVA Y ESPORÁDICA.
+SE RECOMIENDA COMO SIGNO 
+DE PESTAÑA DE SITIO WEB.
+--- Page 9 ---
+Paleta de colores
+Principales
+Secundarios / Gama premium
+--- Page 10 ---
+Se propone el uso de una familia 
+tipográfica que transmite cercanía 
+de una manera muy simple.
+Se trata de una fuente muy versátil 
+ya que contiene muchas variables.
+Además, está disponible en Google 
+Fonts, lo que la hace apta para su 
+uso en sitios web.
+Tipografía
+institucional
+Aa
+Poppins
+ABCDRFGHIJKLMNÑOPQ
+RSTUVWXYZabcdefghijk
+lmnñopqrstuvwxyz 1234
+567890¡!#*()+$%¿?&@
+Thin
+Thin Italic
+ExtraLight
+ExtraLight Italic
+Light
+Light Italic
+Regular
+Italic
+Medium
+Medium Italic
+SemiBold
+SemiBold Italic
+Bold
+Bold Italic
+ExtraBold
+Black
+Black Italic
+ExtraBold Italic
+--- Page 11 ---
+Se propone un estilo de 
+íconos de trazo simple, 
+lineal, delicado, amable y 
+de fácil interpretación, que 
+guarden coherencia entre 
+ellos para verse como un 
+sistema.
+Estilo de
+iconografía
+
+--- Page 12 ---
+Tono de voz
+Se sugiere hablar en primera persona del plural 
+y en el momento de referir al público, utilizar la 
+segunda persona singular: “Tenemos las mejores 
+opciones para que puedas regalar”.
+En confianza, amable y respetuoso. Buscar un 
+tono empático, descontracturado pero no 
+informal. No utilizar palabras del lunfardo ni 
+respuestas “cancheras”, pero sí tratar de ser 
+cercanos, simples, directos y transparentes en 
+las comunicaciones. Utilizar el voseo para 
+enfatizar la cercanía con el público.
+En la medida de lo posible, tratar de borrar las 
+marcas de género del discurso para que cada 
+receptor se sienta identificado. Esto no significa 
+adoptar un lenguaje inclusivo o escribir con x o 
+e, pero sí tratar de construir textos que no se 
+refieran a ningún género en particular. Por 
+ejemplo: En vez de “bienvenido" se recomienda 
+usar "te damos la bienvenida".
+--- Page 13 ---
+Uso de 
+fotografías
+Se propone usar un estilo fotográfico 
+acorde a los valores que necesita 
+transmitir la marca. 
+Tonalidades cálidas, personas 
+sonrientes, en situaciones cotidianas, 
+quizás unidas, compartiendo y 
+celebrando.
+Con estos aspectos logramos transmitir 
+cercanía, confianza, calidez y amor.
+
+--- Page 14 ---
+Ejemplos de
+piezas gráficas
+A continuación se presentan 
+distintas composiciones y piezas 
+gráficas, con el objetivo de mostrar 
+cómo funcionan los elementos 
+presentados anteriormente.
+Los ejemplos sólo son simulaciones 
+de posibles piezas. Los textos e 
+información son simulados, no son 
+reales y no responden a ninguna 
+pieza en particular.
+SE PROPONE
+COMO OTRO RECURSO
+VÁLIDO EL USO
+DE PARTES
+DEL LOGOTIPO
+A MODO DE LÍNEAS
+QUE RECORREN
+LA COMPOSICIÓN.
+--- Page 15 ---
+Más de 20 años de experiencia. 
+2.500 empresas satisfechas.
+Líderes en 
+Regalos de 
+Navidad
+Ver opciones
+
+--- Page 16 ---
+
+--- Page 17 ---
+
+--- Page 18 ---
+
+--- Page 19 ---
+Línea Premium
+/ exclusiva
+
+--- Page 20 ---
+¿Qué te pareció
+la propuesta?
+Me gustaría 
+saber tu opinión.
+Muchas gracias!

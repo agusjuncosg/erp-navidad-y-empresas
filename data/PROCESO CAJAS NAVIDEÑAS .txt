@@ -1,0 +1,298 @@
+🧩 Proceso completo – Cajas Navideñas (versión ampliada para desarrollo)
+1. 📩 Entrada de consulta (lead)
+Origen:
+WhatsApp
+Email
+Necesidad:
+Poder registrar el contacto desde cualquiera de esos canales
+Ideal: integración o al menos carga rápida manual en el sistema
+Resultado esperado:
+Se crea un lead / oportunidad
+Queda asociado:
+Cliente (o potencial cliente)
+Canal de contacto
+Notas iniciales
+Mejora agregada:
+Que el sistema permita generar recordatorios comerciales
+Que se puedan programar seguimientos
+Que haya alertas o mails automáticos para presupuestos que quedaron sin respuesta
+2. 🧾 Armado de presupuesto
+Modalidades:
+Cajas prearmadas
+Cajas personalizadas
+Flujo:
+Se entiende la necesidad del cliente
+Se arma presupuesto en sistema
+Requerimientos importantes:
+Poder generar presupuesto editable
+Poder enviar:
+Catálogo
+Opción tipo Excel editable para que el cliente arme su caja(aunque esto puede ser una solución inicial, idealmente después debería evaluarse una alternativa más controlada dentro del sistema)
+Comunicación:
+Intercambio por mail / WhatsApp
+Sistema debería:
+Registrar que el presupuesto fue enviado
+Dejar estado tipo:
+Presupuesto enviado – pendiente de confirmación
+Mejora agregada:
+Que el presupuesto ya permita visualizar:
+costo estimado
+margen
+rentabilidad del pedido
+3. 📦 Validación de stock y situación de artículos
+Este punto conviene que aparezca antes de confirmar, o al menos al momento de confirmar.
+Lógica deseada:
+Cuando llega mercadería con factura del proveedor, se cargan los artículos al sistema
+El stock se maneja por artículo individual
+Si se vende una caja preestablecida, no se descuenta solo una caja, sino los productos que componen esa caja
+Regla importante:
+Sí se puede vender sin stock
+El sistema debe permitir stock negativo, porque ustedes pueden salir a comprar después
+El sistema debería mostrar:
+stock actual
+stock comprometido
+stock negativo
+artículos faltantes
+artículos críticos
+Objetivo:
+Que se vea claramente la situación real de cada producto y de cada pedido antes de avanzar.
+4. ✅ Confirmación del cliente
+Acciones:
+Retomar presupuesto existente
+Posibilidad de:
+Modificar contenido
+Definir cantidad de cajas
+Definiciones clave:
+% de facturación:
+100% o 50%
+Registro de pago:
+Poder cargar pagos manualmente
+Resultado:
+Presupuesto pasa a:
+Pedido confirmado
+Mejora agregada:
+En este punto ya debería empezar a verse si el pedido:
+está listo para avanzar
+tiene faltantes
+necesita compra
+tiene alguna traba de datos o pago
+5. 🚦 Semáforo del pedido
+Cada pedido debería tener una lectura visual clara.
+Estados posibles:
+Verde → todo ok para avanzar
+Amarillo → hay algo a revisar
+Rojo → el pedido está bloqueado
+Variables que pueden afectar el semáforo:
+stock
+pago
+datos de entrega
+fecha comprometida
+estado de producción
+Objetivo:
+Poder ver muy rápido si un pedido:
+se puede armar
+se puede entregar
+tiene problemas pendientes
+6. 🧾 Facturación
+Requisito:
+No automática, pero sí simplificada
+Acción:
+Botón directo desde presupuesto/pedido:
+Generar factura
+Condiciones:
+Factura por:
+Total
+Parcial (50%)
+Mejora agregada:
+Que se relacione claramente con el estado del pago
+Que después sea fácil detectar:
+cuánto se facturó
+cuánto se cobró
+cuánto queda pendiente
+7. 🚚 Datos de entrega (obligatorio)
+Antes de avanzar, el sistema debe exigir:
+Fecha de entrega
+Dirección
+Datos del cliente
+Extra importante:
+Costo de envío automático según condiciones
+zona
+distancia
+criterio logístico que definan
+Mejora agregada:
+Poder usar estos datos también para:
+planificación
+agrupación de envíos
+generación de remitos
+8. 🏭 Orden de armado (producción)
+Concepto:
+Generar algo tipo:
+Orden de producción / armado
+Debe incluir:
+Detalle completo de la caja
+Cantidades
+Especificaciones relevantes
+Estados:
+Pendiente
+En proceso
+Terminado
+Extras:
+Poder subir:
+foto del pallet
+foto del armado final
+Esto sirve como control visual real.
+9. ⏱️ Planificación de producción / cronograma de armado
+Regla general:
+La producción se organiza en función de la entrega.
+Lógica base:
+Entregas en Córdoba:
+menor anticipación
+Entregas fuera de Córdoba:
+mayor anticipación
+Aclaración importante:
+El cronograma no debería ser totalmente automático.
+Motivo:
+Depende de muchas variables:
+tipo de caja
+cantidad de artículos
+complejidad del armado
+problemas del día
+disponibilidad real del equipo
+Enfoque recomendado:
+El sistema debería asistir
+Pero el cronograma de armado debería poder organizarse de forma manual o semimanual
+Ideal:
+Que el sistema permita ver:
+pedidos pendientes
+fecha de entrega
+prioridad
+situación de stock
+estado del pedido
+Para que desde ahí ustedes armen el cronograma.
+10. 👥 Asistencia del personal
+Esto conviene sumarlo porque impacta directamente en la operación.
+El sistema podría tener:
+ficha de cada persona
+asistencia
+día que viene / no viene
+horario de ingreso
+ausencias
+horas extra
+Objetivo:
+Tener visibilidad de la disponibilidad real del equipo y de cómo eso impacta en el armado.
+11. 📦 Despacho, agrupación de envíos y entrega
+Al momento de enviar:
+Generar automáticamente:
+Remito
+Debe incluir:
+Datos del cliente
+Dirección
+Detalle del pedido
+Espacio para firma
+Formato:
+2 copias:
+Cliente
+Empresa
+Mejora agregada:
+Poder hacer agrupación de envíos, por ejemplo:
+por zona
+por día
+por reparto
+por camión
+La idea es que la logística no sea solo pedido por pedido, sino que pueda ordenarse de forma más eficiente.
+12. 📄 Post-entrega
+Acciones:
+Subir remito firmado al sistema
+Objetivo:
+Tener constancia de la entrega
+Dejar respaldo documental
+Relacionar la entrega con el cierre comercial y financiero
+13. 💰 Cierre de pagos
+Control clave:
+El sistema debe alertar, por ejemplo:
+Pedido entregado con saldo pendiente
+Funcionalidad:
+Seguimiento de deuda
+Registro de pagos restantes
+Alertas de cobro
+Mejora agregada:
+Que las alertas no sean solo al final, sino que también ayuden a detectar antes:
+pedido confirmado sin anticipo
+pedido entregado sin saldo cobrado
+factura emitida sin pago asociado
+14. 📊 Panel de guerra / tablero general
+Esto debería existir como pantalla central del sistema.
+Debería mostrar:
+pedidos pendientes
+pedidos por vencer
+pedidos bloqueados
+pedidos sin stock
+pedidos con pago pendiente
+pedidos listos para armar
+pedidos listos para entregar
+Objetivo:
+Tener una vista operativa rápida de todo lo importante sin entrar pedido por pedido.
+15. 🕓 Historial del pedido y trazabilidad por usuario
+Necesidad:
+Cada usuario debería tener su propio acceso al sistema
+El sistema debería registrar:
+quién creó el pedido
+quién lo modificó
+quién cambió estados
+quién cargó pagos
+quién generó documentos
+quién cerró la entrega
+Objetivo:
+trazabilidad
+orden
+control
+entender qué pasó en cada caso
+🧠 Lógica general del sistema
+Lo más importante para el developer es esto:
+Todo gira en torno a:
+👉 Pedido de cajas navideñas
+Ese pedido debería concentrar:
+cliente
+presupuesto
+composición de la caja
+stock asociado
+facturación
+pagos
+entrega
+producción
+historial
+alertas
+🔄 Estados del pedido
+Una propuesta ordenada de estados sería:
+Lead
+Presupuesto en preparación
+Presupuesto enviado
+Pendiente de confirmación
+Confirmado
+Pendiente de anticipo / pago
+Listo para programar
+En producción
+Terminado / listo
+Despachado
+Entregado
+Pendiente de saldo
+Cerrado
+🎯 Criterios funcionales clave
+El sistema debe permitir:
+vender cajas prearmadas y personalizadas
+descontar stock por artículos individuales
+vender con stock negativo
+visualizar costos y márgenes
+cargar pagos manualmente
+generar factura desde el pedido
+exigir datos de entrega
+generar orden de armado
+organizar cronograma de armado de forma manual/asistida
+generar remito
+subir remito firmado
+agrupar envíos
+hacer seguimiento comercial
+mostrar semáforo del pedido
+tener panel de guerra
+registrar historial por usuario
+considerar asistencia del personal

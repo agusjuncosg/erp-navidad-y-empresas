@@ -1,0 +1,115 @@
+<h2>Diseño — Base de Datos</h2>
+<p class="subtitle">Sección 2 de 3: las tablas en PostgreSQL que reemplazan al store.js actual</p>
+
+<div class="section">
+  <div class="mockup">
+    <div class="mockup-header">Tablas principales (espejo del store.js actual)</div>
+    <div class="mockup-body">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font-size:0.85em;">
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">products</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, code, name</li>
+            <li>brand, category</li>
+            <li>cost, price, stock</li>
+            <li>created_at</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">orders (ventas)</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, order_number</li>
+            <li>client_name, status</li>
+            <li>items (JSON)</li>
+            <li>total, created_at</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">leads (CRM)</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, name, company</li>
+            <li>phone, email</li>
+            <li>status, notes</li>
+            <li>created_at</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">purchases (compras)</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, supplier</li>
+            <li>items (JSON)</li>
+            <li>total, status</li>
+            <li>created_at</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">payments (caja)</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, type (ingreso/egreso)</li>
+            <li>category, amount</li>
+            <li>description, date</li>
+            <li>created_at</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">employees</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, name, role</li>
+            <li>salary, start_date</li>
+            <li>created_at</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">assembly_queue</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, order_id (FK)</li>
+            <li>status, assigned_to</li>
+            <li>notes, created_at</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">logistics</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, order_id (FK)</li>
+            <li>carrier, tracking</li>
+            <li>status, delivery_date</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid var(--border);border-radius:6px;padding:10px;">
+          <div class="label">auth.users (Supabase)</div>
+          <ul style="margin:6px 0;padding-left:16px;">
+            <li>id, email</li>
+            <li>password (hash)</li>
+            <li><em>gestionado por Supabase</em></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Estrategia de acceso</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:0.9em;">
+    <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <div class="label">Autenticación</div>
+      <p>Supabase Auth con email + password. Los 5 usuarios se crean desde el dashboard de Supabase. No hay registro público — solo login.</p>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <div class="label">Row Level Security (RLS)</div>
+      <p>Política simple: cualquier usuario autenticado puede leer y escribir todas las tablas. Sin roles diferenciados, como pediste.</p>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:24px;color:var(--text-secondary);">¿Esta estructura de datos te parece correcta? Respondé en el terminal.</p>

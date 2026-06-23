@@ -1,0 +1,78 @@
+<h2>Diseño — Arquitectura General</h2>
+<p class="subtitle">Sección 1 de 3: cómo quedan conectadas las piezas</p>
+
+<div class="section">
+  <div class="mockup">
+    <div class="mockup-header">Diagrama de arquitectura</div>
+    <div class="mockup-body" style="font-family:monospace;font-size:0.9em;line-height:2;">
+      <div style="display:grid;grid-template-columns:1fr 80px 1fr 80px 1fr;align-items:center;gap:8px;text-align:center;">
+
+        <div style="border:2px solid var(--accent);border-radius:8px;padding:16px;">
+          <div style="font-size:1.4em;">💻</div>
+          <strong>Browser</strong><br>
+          <small>HTML + CSS + JS<br>vanilla (sin cambios)</small>
+        </div>
+
+        <div style="text-align:center;color:var(--accent);">
+          <div style="font-size:1.2em;">fetch()</div>
+          <div>→→→</div>
+          <small>HTTPS</small>
+        </div>
+
+        <div style="border:2px solid #4caf50;border-radius:8px;padding:16px;">
+          <div style="font-size:1.4em;">🟢</div>
+          <strong>Supabase</strong><br>
+          <small>API REST auto-generada<br>Auth incluido<br>Row Level Security</small>
+        </div>
+
+        <div style="text-align:center;color:#4caf50;">
+          <div style="font-size:1.2em;">SQL</div>
+          <div>→→→</div>
+        </div>
+
+        <div style="border:2px solid #9c27b0;border-radius:8px;padding:16px;">
+          <div style="font-size:1.4em;">🗄️</div>
+          <strong>PostgreSQL</strong><br>
+          <small>Base de datos<br>gestionada por Supabase</small>
+        </div>
+
+      </div>
+
+      <div style="margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+          <strong>Deploy del frontend</strong><br>
+          <small>Netlify o Vercel — push to deploy, HTTPS automático, dominio gratis (o propio)</small>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+          <strong>No hay servidor propio</strong><br>
+          <small>Supabase es el backend. Sin Node, sin Express, sin mantener nada.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>¿Qué cambia en el código actual?</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <div class="label">Lo que NO cambia</div>
+      <ul>
+        <li>Todo el HTML/CSS</li>
+        <li>Todos los módulos (sales, inventory, etc.)</li>
+        <li>El router (app.js)</li>
+        <li>El sistema de UI (ui.js)</li>
+      </ul>
+    </div>
+    <div style="border:1px solid #4caf50;border-radius:8px;padding:12px;">
+      <div class="label" style="color:#4caf50;">Lo que cambia</div>
+      <ul>
+        <li><strong>store.js</strong> — reemplaza localStorage por llamadas a Supabase</li>
+        <li>Se agrega un módulo de <strong>login</strong> (pantalla de autenticación)</li>
+        <li>Se agrega el cliente de Supabase (1 script tag)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:24px;color:var(--text-secondary);">¿Esta arquitectura te parece bien? Respondé en el terminal para continuar con la sección 2 (Base de datos).</p>

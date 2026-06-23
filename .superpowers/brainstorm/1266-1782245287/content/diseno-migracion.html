@@ -1,0 +1,73 @@
+<h2>Diseño — Plan de Migración del Código</h2>
+<p class="subtitle">Sección 3 de 3: cómo pasamos del localStorage actual a Supabase, paso a paso</p>
+
+<div class="section">
+  <div class="mockup">
+    <div class="mockup-header">Fases de implementación</div>
+    <div class="mockup-body">
+      <div style="display:flex;flex-direction:column;gap:16px;font-size:0.9em;">
+
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:start;">
+          <div style="background:var(--accent);color:white;border-radius:6px;padding:8px;text-align:center;font-weight:bold;">Fase 1</div>
+          <div style="border:1px solid var(--border);border-radius:6px;padding:12px;">
+            <strong>Setup de Supabase + login</strong>
+            <p style="margin:6px 0;">Crear proyecto en Supabase, definir tablas, activar Auth. Agregar pantalla de login al ERP (antes de que cargue el app). Sin tocar ningún módulo todavía.</p>
+            <div class="label" style="color:#4caf50;">~2-3 días</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:start;">
+          <div style="background:var(--accent);color:white;border-radius:6px;padding:8px;text-align:center;font-weight:bold;">Fase 2</div>
+          <div style="border:1px solid var(--border);border-radius:6px;padding:12px;">
+            <strong>Reemplazar store.js</strong>
+            <p style="margin:6px 0;">Crear un nuevo <code>store.js</code> que llame a la API de Supabase en vez de localStorage. La interfaz pública del store (<code>store.orders</code>, <code>store.saveData()</code>) queda igual — los módulos no se enteran del cambio.</p>
+            <div class="label" style="color:#4caf50;">~3-5 días</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:start;">
+          <div style="background:var(--accent);color:white;border-radius:6px;padding:8px;text-align:center;font-weight:bold;">Fase 3</div>
+          <div style="border:1px solid var(--border);border-radius:6px;padding:12px;">
+            <strong>Deploy a producción</strong>
+            <p style="margin:6px 0;">Subir el frontend a Netlify (drag & drop o conectado a GitHub). Configurar variables de entorno (URL y key de Supabase). Probar con los 5 usuarios reales.</p>
+            <div class="label" style="color:#4caf50;">~1-2 días</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:80px 1fr;gap:12px;align-items:start;">
+          <div style="background:#666;color:white;border-radius:6px;padding:8px;text-align:center;font-weight:bold;">Fase 4</div>
+          <div style="border:1px solid var(--border);border-radius:6px;padding:12px;">
+            <strong>Ajustes post-lanzamiento</strong>
+            <p style="margin:6px 0;">Backups automáticos (Supabase los hace por defecto en plan Pro), dominio propio, ajustes de UX según feedback del equipo.</p>
+            <div class="label">Ongoing</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;font-size:0.85em;text-align:center;">
+    <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <div style="font-size:1.6em;">⏱️</div>
+      <strong>Tiempo total estimado</strong><br>
+      <span style="color:#4caf50;font-size:1.1em;">1-2 semanas</span>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <div style="font-size:1.6em;">💰</div>
+      <strong>Costo mensual</strong><br>
+      <span style="color:#4caf50;font-size:1.1em;">~$25 USD/mes</span><br>
+      <small>(Supabase Pro + Netlify gratis)</small>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:8px;padding:12px;">
+      <div style="font-size:1.6em;">🔒</div>
+      <strong>Backups</strong><br>
+      <span style="color:#4caf50;font-size:1.1em;">Automáticos</span><br>
+      <small>Daily backups incluidos en Pro</small>
+    </div>
+  </div>
+</div>
+
+<p style="margin-top:24px;color:var(--text-secondary);">¿Este plan de migración tiene sentido? Si aprobás las 3 secciones, escribimos el documento de diseño y arrancamos el plan de implementación.</p>

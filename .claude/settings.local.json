@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\Agustin\\\\OneDrive\\\\Documentos\\\\Claude\\\\Projects\\\\ERP Navidad y Empresas\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "Bash(ConvertTo-Csv -NoTypeInformation)",
+      "Bash(Out-String)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\Agustin\\\\OneDrive\\\\Documentos\\\\Claude\\\\Projects\\\\ERP Navidad y Empresas\" -Recurse -Force | ForEach-Object { $_.FullName })",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(bash \"C:/Users/Agustin/.claude/skills/superpowers/skills/brainstorming/scripts/start-server.sh\" --project-dir \"C:/Users/Agustin/OneDrive/Documentos/Claude/Projects/ERP Navidad y Empresas\")",
+      "Bash(xargs cat)",
+      "Bash(git config *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}

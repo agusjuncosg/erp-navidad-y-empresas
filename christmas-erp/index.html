@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVIDAD Y EMPRESAS - Sistema de Gestión de Cajas Navideñas</title>
+    <meta name="description" content="ERP Navideño para la gestión integral de ventas, stock, producción de armado y distribución de cajas navideñas.">
+    <!-- Google Fonts: Poppins y Baloo Tamma 2 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Decoración Navideña Sutil de Fondo -->
+    <div class="glow-bg"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="img/logo.png" alt="Navidad y Empresas" style="width: 48px; height: 48px; border-radius: var(--radius-sm); object-fit: contain; background: white; padding: 2px; box-shadow: 0 4px 15px rgba(255,255,255,0.05);">
+                <div class="logo-text">
+                    <h1 style="font-size: 1rem; line-height: 1.2;">NAVIDAD<br>Y EMPRESAS</h1>
+                    <span>ERP de Cajas Navideñas</span>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="avatar">A</div>
+                <div class="user-info">
+                    <h3 id="current-user-name">Agustín</h3>
+                    <select id="user-role-select" class="role-selector">
+                        <option value="Administrador">Administrador</option>
+                        <option value="Comercial">Vendedor Comercial</option>
+                        <option value="Producción">Jefe de Producción</option>
+                        <option value="Logística">Coordinador de Envíos</option>
+                    </select>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#dashboard" class="nav-item active" id="btn-nav-dashboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"></rect><rect x="14" y="3" width="7" height="5" rx="1"></rect><rect x="14" y="12" width="7" height="9" rx="1"></rect><rect x="3" y="16" width="7" height="5" rx="1"></rect></svg>
+                    <span>Panel de Guerra</span>
+                </a>
+                <a href="#crm" class="nav-item" id="btn-nav-crm">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    <span>CRM / Leads</span>
+                </a>
+                <a href="#pedidos" class="nav-item" id="btn-nav-pedidos">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                    <span>Pedidos / Ventas</span>
+                </a>
+                <a href="#inventory" class="nav-item" id="btn-nav-inventory">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l-7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <span>Inventario & Combos</span>
+                </a>
+                <a href="#assembly" class="nav-item" id="btn-nav-assembly">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    <span>Cola de Armado</span>
+                </a>
+                <a href="#logistics" class="nav-item" id="btn-nav-logistics">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    <span>Logística & Envíos</span>
+                </a>
+                <a href="#finanzas" class="nav-item" id="btn-nav-finanzas">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    <span>Finanzas & Caja</span>
+                </a>
+                <a href="#purchases" class="nav-item" id="btn-nav-purchases">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span>Compras</span>
+                </a>
+                <a href="#personal" class="nav-item" id="btn-nav-personal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <span>Personal & Sueldos</span>
+                </a>
+                <a href="#settings" class="nav-item" id="btn-nav-settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+
+            <!-- Buscador Global - encima del footer -->
+            <div class="sidebar-search">
+                <input type="text" id="global-search-input" class="sidebar-search-input" placeholder="🔍 Buscar empresa o pedido..." autocomplete="off"
+                    oninput="app.handleGlobalSearch(this.value)"
+                    onfocus="document.getElementById('global-search-results').style.display='block'"
+                    onblur="setTimeout(()=>{const r=document.getElementById('global-search-results'); if(r) r.style.display='none'},200)">
+                <div id="global-search-results" class="sidebar-search-results"></div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="system-status">
+                    <span class="status-indicator online"></span>
+                    <span>Modo Demo Activo</span>
+                </div>
+                <button class="btn-reset" onclick="if(confirm('⚠️ Esto borrará TODOS los datos del ERP de forma permanente e irreversible.\n\n¿Estás seguro?') && prompt('Escribí BORRAR para confirmar') === 'BORRAR') { store.resetToDefaults(); location.reload(); }">
+                    Restaurar Datos de Fábrica
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content" id="main-content">
+            <!-- Dynamic screens injected here -->
+        </main>
+    </div>
+
+    <!-- Notification Toast System -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Modales Globales -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal" id="global-modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Título del Modal</h2>
+                <button class="close-modal" id="btn-close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Dynamic modal content injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SheetJS para exportaciones XLSX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- Core: infraestructura del sistema -->
+    <script src="js/core/store.js"></script>
+    <script src="js/utils/ui.js"></script>
+    <script src="js/utils/logo.js"></script>
+
+    <!-- Módulos de negocio -->
+    <script src="js/modules/dashboard.js"></script>
+    <script src="js/modules/sales.js"></script>
+    <script src="js/modules/inventory.js"></script>
+    <script src="js/modules/purchases.js"></script>
+    <script src="js/modules/expenses.js"></script>
+    <script src="js/modules/assembly.js"></script>
+    <script src="js/modules/logistics.js"></script>
+    <script src="js/modules/payments.js"></script>
+    <script src="js/modules/employees.js"></script>
+    <script src="js/modules/reports.js"></script>
+    <script src="js/modules/settings.js"></script>
+
+    <!-- Core: router principal (debe cargarse último) -->
+    <script src="js/core/app.js"></script>
+    
+    <!-- Zona de Impresión Global para evitar nulos -->
+    <div id="remito-print-zone" style="display: none;"></div>
+</body>
+</html>

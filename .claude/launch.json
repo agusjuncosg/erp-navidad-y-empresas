@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "erp-navidad",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "5555", "christmas-erp"],
+      "port": 5555
+    }
+  ]
+}

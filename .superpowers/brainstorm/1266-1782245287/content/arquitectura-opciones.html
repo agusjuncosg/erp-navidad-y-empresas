@@ -1,0 +1,40 @@
+<h2>¿Cómo querés mover el ERP a internet?</h2>
+<p class="subtitle">El ERP hoy es una app local (localStorage). Hay 3 caminos para pasarla a internet, cada uno con distinto esfuerzo y capacidad.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Solo hosting del frontend</h3>
+      <p>Subir el HTML/CSS/JS tal cual a un servidor (Netlify, GitHub Pages, VPS). Sigue usando localStorage — cada usuario tiene sus propios datos en su browser. <strong>Sin backend.</strong></p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Listo en horas</li><li>Gratis o casi gratis</li><li>Cero cambios de código</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Datos no compartidos entre usuarios</li><li>Si borrás el browser, perdés todo</li><li>Sin acceso móvil real (sin sync)</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Frontend + Backend con base de datos</h3>
+      <p>Reemplazar localStorage por una API REST + base de datos. Múltiples usuarios, datos centralizados, acceso desde cualquier dispositivo. <strong>La arquitectura ya está preparada para esto.</strong></p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Datos reales y compartidos</li><li>Multiusuario (vendedor, armador, admin)</li><li>Seguridad y backups</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Semanas de trabajo</li><li>Costo de servidor (~$5-20/mes)</li><li>Requiere elegir stack de backend</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Híbrido: hosting + sync a Google Sheets / Supabase</h3>
+      <p>El frontend se sirve desde internet, pero en vez de un backend custom, se conecta a Google Sheets, Airtable o Supabase (Postgres gratis). Paso intermedio pragmático.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Datos centralizados sin armar servidor</li><li>Semanas → días</li><li>Supabase free tier muy generoso</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Deuda técnica si escala mucho</li><li>Google Sheets: no es un DB real</li><li>Requiere algo de código nuevo</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>

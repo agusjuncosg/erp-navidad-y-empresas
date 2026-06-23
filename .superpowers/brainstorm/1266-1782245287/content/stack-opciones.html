@@ -1,0 +1,81 @@
+<h2>¿Qué stack usamos para el backend?</h2>
+<p class="subtitle">5 usuarios, sin roles, sin migración de datos, sin restricción de costo. Estas son las 3 opciones más sensatas.</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Supabase + mismo frontend vanilla JS <span style="font-size:0.8em;color:#4caf50;">⭐ Recomendado</span></h3>
+      <p>Supabase es un Postgres gestionado con API REST y autenticación incluidos. El frontend vanilla JS existente llama a la API de Supabase directamente. <strong>Sin servidor propio que mantener.</strong></p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4>
+          <ul>
+            <li>Cero backend que escribir — Supabase genera la API sola</li>
+            <li>Auth de usuarios incluido (email + password)</li>
+            <li>Dashboard visual para ver/editar datos</li>
+            <li>Frontend: cambios mínimos (reemplazar localStorage por fetch)</li>
+            <li>Deploy del frontend: Netlify o Vercel gratis</li>
+            <li>Supabase Pro: ~$25/mes, muy generoso</li>
+          </ul>
+        </div>
+        <div class="cons"><h4>Cons</h4>
+          <ul>
+            <li>Dependencia de un tercero (Supabase)</li>
+            <li>Lógica de negocio compleja va en el frontend o en Edge Functions</li>
+          </ul>
+        </div>
+      </div>
+      <p><strong>Tiempo estimado:</strong> 1-2 semanas para tener algo funcional en producción.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Railway + Node.js (Express) + PostgreSQL</h3>
+      <p>Un servidor Node Express propio en Railway (PaaS simple), con una base de datos Postgres. Más control que Supabase, menos infraestructura que un VPS.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4>
+          <ul>
+            <li>Control total del backend — podés hacer cualquier lógica</li>
+            <li>Railway es muy fácil de deployar (push to deploy)</li>
+            <li>Stack ampliamente conocido</li>
+          </ul>
+        </div>
+        <div class="cons"><h4>Cons</h4>
+          <ul>
+            <li>Hay que escribir el backend (rutas, auth, validaciones)</li>
+            <li>Más código = más tiempo (3-5 semanas)</li>
+            <li>Railway: ~$20-40/mes según uso</li>
+          </ul>
+        </div>
+      </div>
+      <p><strong>Tiempo estimado:</strong> 3-5 semanas.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>VPS (DigitalOcean/Linode) + stack a medida</h3>
+      <p>Un servidor dedicado donde instalás lo que quieras. Máximo control, máxima complejidad operativa.</p>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4>
+          <ul>
+            <li>Control total de la infraestructura</li>
+            <li>Sin límites de ningún servicio</li>
+            <li>Precio fijo predecible (~$12-48/mes)</li>
+          </ul>
+        </div>
+        <div class="cons"><h4>Cons</h4>
+          <ul>
+            <li>Mantenimiento del servidor (updates, SSL, seguridad)</li>
+            <li>Más tiempo y conocimiento técnico</li>
+            <li>Overkill para 5 usuarios</li>
+          </ul>
+        </div>
+      </div>
+      <p><strong>Tiempo estimado:</strong> 4-8 semanas.</p>
+    </div>
+  </div>
+</div>
