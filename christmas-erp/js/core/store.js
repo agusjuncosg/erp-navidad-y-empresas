@@ -2384,7 +2384,159 @@ Fecha de entrega: La determina el cliente.`
 
 class ChristmasERPStore {
     constructor() {
-        this.loadData();
+        // Data is loaded asynchronously via store.init()
+        // called from app._boot() after auth is verified.
+    }
+
+    async init() {
+        try {
+            const [
+                { data: products },
+                { data: orders },
+                { data: leads },
+                { data: purchases },
+                { data: expenses },
+                { data: employees },
+                { data: attendance },
+                { data: combos },
+                { data: providers },
+                { data: config }
+            ] = await Promise.all([
+                supabaseClient.from('products').select('data'),
+                supabaseClient.from('orders').select('data'),
+                supabaseClient.from('leads').select('data'),
+                supabaseClient.from('purchases').select('data'),
+                supabaseClient.from('expenses').select('data'),
+                supabaseClient.from('employees').select('data'),
+                supabaseClient.from('attendance').select('data'),
+                supabaseClient.from('combos').select('data'),
+                supabaseClient.from('providers').select('data'),
+                supabaseClient.from('app_config').select('key, value')
+            ]);
+
+            this.products = (products && products.length > 0)
+                ? products.map(r => r.data)
+                : JSON.parse(JSON.stringify(INITIAL_CATALOG));
+
+            this.orders = (orders && orders.length > 0)
+                ? orders.map(r => r.data)
+                : [];
+
+            this.leads = (leads && leads.length > 0)
+                ? leads.map(r => r.data)
+                : JSON.parse(JSON.stringify(INITIAL_LEADS));
+
+            this.purchases = (purchases && purchases.length > 0)
+                ? purchases.map(r => r.data)
+                : [];
+
+            this.expenses = (expenses && expenses.length > 0)
+                ? expenses.map(r => r.data)
+                : [];
+
+            this.employees = (employees && employees.length > 0)
+                ? employees.map(r => r.data)
+                : JSON.parse(JSON.stringify(INITIAL_EMPLOYEES));
+
+            this.attendance = (attendance && attendance.length > 0)
+                ? attendance.map(r => r.data)
+                : JSON.parse(JSON.stringify(INITIAL_ATTENDANCE));
+
+            this.combos = (combos && combos.length > 0)
+                ? combos.map(r => r.data)
+                : JSON.parse(JSON.stringify(INITIAL_COMBOS));
+
+            this.providers = (providers && providers.length > 0)
+                ? providers.map(r => r.data)
+                : JSON.parse(JSON.stringify(INITIAL_PROVIDERS));
+
+            const configMap = {};
+            if (config) config.forEach(r => { configMap[r.key] = r.value; });
+            this.settings = configMap.settings || JSON.parse(JSON.stringify(DEFAULT_GLOBAL_SETTINGS));
+            this.nextOrderNumber = configMap.nextOrderNumber ?? 1;
+
+            this._applyMigrations();
+
+        } catch (e) {
+            console.error('Error cargando datos de Supabase:', e);
+            this.resetToDefaults();
+        }
+    }
+
+    _applyMigrations() {
+        (this.attendance || []).forEach(att => {
+            if (!att.paymentStatus) att.paymentStatus = 'Pendiente';
+        });
+
+        (this.leads || []).forEach(lead => {
+            if (typeof lead.notes === 'string') {
+                const txt = lead.notes.trim();
+                lead.notes = txt ? [{ date: lead.date || new Date().toISOString(), user: 'Sistema', text: txt }] : [];
+            } else if (!Array.isArray(lead.notes)) {
+                lead.notes = [];
+            }
+        });
+
+        (this.orders || []).forEach((order, idx) => {
+            if (!order.displayId) {
+                const year = order.date ? order.date.substring(0, 4) : String(new Date().getFullYear());
+                order.displayId = `P-${year}-${String(idx + 1).padStart(3, '0')}`;
+            }
+            if (order.status === 'Terminado / Listo') order.status = 'Listo para Despacho';
+            if (!order.armado) order.armado = { cajasArmadas: 0, fotoArmado: null, sesiones: [] };
+            if (!order.entidadesFacturacion || order.entidadesFacturacion.length === 0) {
+                order.entidadesFacturacion = [{
+                    id: `ef_${order.id}_1`,
+                    razonSocial: order.clientName || '',
+                    cuit: order.cuit || '',
+                    cantidadCajas: order.numberOfBoxes || 0,
+                    monto: order.total || 0,
+                    pagos: order.payments ? JSON.parse(JSON.stringify(order.payments)) : [],
+                    facturas: order.scheduledInvoices ? JSON.parse(JSON.stringify(order.scheduledInvoices)) : []
+                }];
+            }
+            if (!order.entregas || order.entregas.length === 0) {
+                order.entregas = [{
+                    id: `ent_${order.id}_1`,
+                    cantidadCajas: order.numberOfBoxes || 0,
+                    direccion: order.deliveryAddress || '',
+                    localidad: order.deliveryLocation || '',
+                    provincia: '',
+                    fechaEntrega: order.deliveryDate || '',
+                    chofer: order.assignedDriver || '',
+                    costoEnvio: order.shippingRealCost || order.internalShippingCost || 0,
+                    status: ChristmasERPStore._legacyDeliveryStatus(order.status),
+                    remito: order.signedRemitoPhoto || '',
+                    fotoEntrega: ''
+                }];
+            }
+            if (order.shippingRealCost === undefined) order.shippingRealCost = order.internalShippingCost || 0;
+            if (order.shippingCharged === undefined) order.shippingCharged = order.internalShippingCost || 0;
+            if (order.shippingBonificado === undefined) order.shippingBonificado = 0;
+            if (order.shippingZone === undefined) order.shippingZone = order.deliveryLocation ? 'Manual' : '';
+            if (order.shippingCalcMode === undefined) order.shippingCalcMode = 'manual';
+        });
+
+        const normalGlobal = (this.settings || {}).valorHoraNormal || 2500;
+        const extraGlobal = (this.settings || {}).valorHoraExtra || 3750;
+        (this.employees || []).forEach(emp => {
+            if (emp.isCustomRate === undefined) {
+                emp.isCustomRate = (emp.hourlyRate !== normalGlobal || emp.extraHourlyRate !== extraGlobal);
+            }
+            if (!emp.status) emp.status = 'Activo';
+        });
+
+        if (!this.nextOrderNumber || this.nextOrderNumber < 1) {
+            this.nextOrderNumber = (this.orders || []).length + 1;
+        }
+
+        const CONFIRMED_STATUSES = ['Confirmado', 'En Producción', 'Armado Parcial',
+            'Listo para Despacho', 'Entrega Parcial', 'Entregado', 'Cerrado'];
+        (this.orders || []).forEach(o => {
+            if (o.stockDescontado === undefined && CONFIRMED_STATUSES.includes(o.status)) {
+                o.stockDescontado = true;
+            }
+        });
     }
 
     loadData() {
@@ -2646,35 +2798,29 @@ class ChristmasERPStore {
     }
 
     saveData() {
-        const data = {
-            products: this.products,
-            leads: this.leads,
-            employees: this.employees,
-            attendance: this.attendance,
-            combos: this.combos,
-            orders: this.orders,
-            settings: this.settings,
-            purchases: this.purchases,
-            expenses: this.expenses,
-            providers: this.providers,
-            nextOrderNumber: this.nextOrderNumber
-        };
-        try {
-            localStorage.setItem("christmas_erp_data_v2", JSON.stringify(data));
-        } catch (e) {
-            console.error("Error al guardar datos en localStorage", e);
-            if (e.name === "QuotaExceededError" || e.code === 22) {
-                if (window.app && typeof window.app.showToast === "function") {
-                    window.app.showToast("⚠️ El almacenamiento del navegador está lleno. Libere espacio borrando pedidos antiguos o imágenes.", "error");
-                } else {
-                    alert("⚠️ Error: El almacenamiento del navegador está lleno. No se pudieron guardar los cambios.");
-                }
-            } else {
-                if (window.app && typeof window.app.showToast === "function") {
-                    window.app.showToast("Error al guardar los datos localmente.", "error");
-                }
-            }
-        }
+        this._persistToSupabase().catch(e => {
+            console.error('Error al guardar en Supabase:', e);
+        });
+    }
+
+    async _persistToSupabase() {
+        const toRows = (arr) => (arr || []).map(item => ({ id: item.id, data: item }));
+
+        await Promise.all([
+            supabaseClient.from('products').upsert(toRows(this.products)),
+            supabaseClient.from('orders').upsert(toRows(this.orders)),
+            supabaseClient.from('leads').upsert(toRows(this.leads)),
+            supabaseClient.from('purchases').upsert(toRows(this.purchases)),
+            supabaseClient.from('expenses').upsert(toRows(this.expenses)),
+            supabaseClient.from('employees').upsert(toRows(this.employees)),
+            supabaseClient.from('attendance').upsert(toRows(this.attendance)),
+            supabaseClient.from('combos').upsert(toRows(this.combos)),
+            supabaseClient.from('providers').upsert(toRows(this.providers)),
+            supabaseClient.from('app_config').upsert([
+                { key: 'settings', value: this.settings },
+                { key: 'nextOrderNumber', value: this.nextOrderNumber }
+            ])
+        ]);
     }
 
     resetToDefaults() {
@@ -2742,5 +2888,3 @@ function jsonCopy(obj) {
 }
 
 window.store = new ChristmasERPStore();
-// Soporte para versión vieja de datos limpia
-localStorage.removeItem("christmas_erp_data");
