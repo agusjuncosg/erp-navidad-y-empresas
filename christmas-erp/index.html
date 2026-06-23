@@ -12,6 +12,35 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<!-- Login Overlay -->
+<div id="login-overlay" style="display:none; position:fixed; inset:0; background:var(--bg-secondary); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:var(--bg-primary); border:1px solid var(--border); border-radius:12px; padding:40px; width:360px; box-shadow:0 8px 32px rgba(0,0,0,0.3);">
+        <div style="text-align:center; margin-bottom:32px;">
+            <img src="img/logo.png" alt="Navidad y Empresas" style="height:48px; margin-bottom:16px; display:block; margin-left:auto; margin-right:auto;">
+            <h2 style="margin:0; font-size:1.2rem;">ERP — Navidad y Empresas</h2>
+            <p style="margin:8px 0 0; color:var(--text-secondary); font-size:0.9rem;">Ingresá con tu cuenta</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+            <input id="login-email" type="email" placeholder="Email" autocomplete="email"
+                style="padding:10px 14px; border:1px solid var(--border); border-radius:6px; background:var(--bg-secondary); color:var(--text-primary); font-size:1rem;">
+            <input id="login-password" type="password" placeholder="Contraseña" autocomplete="current-password"
+                style="padding:10px 14px; border:1px solid var(--border); border-radius:6px; background:var(--bg-secondary); color:var(--text-primary); font-size:1rem;">
+            <p id="login-error" style="color:var(--danger, #e53e3e); font-size:0.85rem; min-height:1.2em; margin:0;"></p>
+            <button id="btn-login"
+                style="padding:12px; background:var(--accent); color:white; border:none; border-radius:6px; font-size:1rem; cursor:pointer; font-weight:600;">
+                <span id="btn-login-text">Ingresar</span>
+                <span id="btn-login-spinner" style="display:none;">Cargando...</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- App Loading Screen -->
+<div id="app-loading" style="display:flex; position:fixed; inset:0; background:var(--bg-secondary); z-index:9998; align-items:center; justify-content:center; flex-direction:column; gap:16px;">
+    <img src="img/logo.png" alt="" style="height:48px; opacity:0.7;">
+    <p style="color:var(--text-secondary); font-size:0.95rem;">Cargando ERP...</p>
+</div>
+
     <!-- Decoración Navideña Sutil de Fondo -->
     <div class="glow-bg"></div>
 
@@ -91,6 +120,13 @@
                 <div id="global-search-results" class="sidebar-search-results"></div>
             </div>
 
+            <div style="padding:16px; margin-top:auto;">
+                <button onclick="auth.logout()"
+                    style="width:100%; padding:8px; background:transparent; border:1px solid var(--border); border-radius:6px; color:var(--text-secondary); cursor:pointer; font-size:0.85rem;">
+                    Cerrar sesión
+                </button>
+            </div>
+
             <div class="sidebar-footer">
                 <div class="system-status">
                     <span class="status-indicator online"></span>
@@ -126,6 +162,11 @@
 
     <!-- SheetJS para exportaciones XLSX -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- Supabase JS v2 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/core/supabase-client.js"></script>
+    <script src="js/core/auth.js"></script>
 
     <!-- Core: infraestructura del sistema -->
     <script src="js/core/store.js"></script>
