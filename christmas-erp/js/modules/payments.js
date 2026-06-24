@@ -288,11 +288,31 @@ class PaymentsModule {
                             <span style="font-size:0.78rem; color:${invColor};">${invLabel}</span>
                         </td>
                         <td style="padding:6px 10px; text-align:right;">
-                            <div style="display:flex; gap:4px; justify-content:flex-end; flex-wrap:wrap;">
-                                ${deuda > 0 ? `<button class="btn btn-green btn-sm" onclick="paymentsModule.openRegisterPaymentModal('${order.id}','${ef.id}')" style="padding:2px 6px; font-size:0.73rem;">Cobrar</button>` : ""}
-                                <button class="btn btn-secondary btn-sm" onclick="paymentsModule.openSchedulePaymentsModal('${order.id}','${ef.id}')" style="padding:2px 6px; font-size:0.73rem;">💰 Cobros</button>
-                                <button class="btn btn-secondary btn-sm" onclick="paymentsModule.openScheduleInvoicesModal('${order.id}','${ef.id}')" style="padding:2px 6px; font-size:0.73rem;">🧾 Ficha</button>
-                                <button class="btn btn-secondary btn-sm" onclick="paymentsModule.viewPaymentsHistory('${order.id}','${ef.id}')" style="padding:2px 6px; font-size:0.73rem;">Historial</button>
+                            <div style="display:flex; flex-direction:column; align-items:flex-end; gap:5px;">
+                                ${deuda > 0 ? `
+                                    <button class="btn btn-green btn-sm"
+                                            onclick="paymentsModule.openSchedulePaymentsModal('${order.id}','${ef.id}')"
+                                            style="padding:3px 10px; font-size:0.73rem; font-weight:600;">
+                                        Registrar cobro
+                                    </button>
+                                ` : ''}
+                                <div style="display:flex; gap:4px;">
+                                    <button class="btn btn-secondary btn-sm"
+                                            onclick="paymentsModule.openSchedulePaymentsModal('${order.id}','${ef.id}')"
+                                            style="padding:2px 6px; font-size:0.7rem;">
+                                        Plan de cobros
+                                    </button>
+                                    <button class="btn btn-secondary btn-sm"
+                                            onclick="paymentsModule.openScheduleInvoicesModal('${order.id}','${ef.id}')"
+                                            style="padding:2px 6px; font-size:0.7rem;">
+                                        Plan de facturación
+                                    </button>
+                                    <button class="btn btn-secondary btn-sm"
+                                            onclick="paymentsModule.viewPaymentsHistory('${order.id}','${ef.id}')"
+                                            style="padding:2px 6px; font-size:0.7rem;">
+                                        Historial
+                                    </button>
+                                </div>
                             </div>
                         </td>
                     </tr>`;
