@@ -1434,6 +1434,14 @@ class SalesModule {
                                 <span>Opciones de cotización: <span id="txt-total-options-count">1</span></span>
                             </div>
 
+                            <!-- Botón Guardar Opción -->
+                            <div id="btn-save-option-container" style="display:flex; justify-content:flex-start;">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="salesModule.addOption()"
+                                        style="padding: 7px 16px; font-size: 0.8rem; font-weight:600; background:var(--color-blue);">
+                                    Guardar Opción →
+                                </button>
+                            </div>
+
                             <div style="display:flex; gap: 8px; justify-content:flex-end;">
                                 <button type="button" class="btn btn-primary btn-sm" onclick="salesModule.saveBuilderOrder('${order ? order.id : ''}')" style="padding: 8px 16px; font-size: 0.8rem; font-weight:600;">
                                     ${isEditing ? 'Guardar Cambios' : 'Generar Presupuesto'}
@@ -1509,6 +1517,11 @@ class SalesModule {
 
         const countText = document.getElementById("txt-total-options-count");
         if (countText) countText.innerText = this.builderOptions.length;
+
+        const saveOptBtn = document.getElementById("btn-save-option-container");
+        if (saveOptBtn) {
+            saveOptBtn.style.display = this.builderOptions.length < 5 ? "flex" : "none";
+        }
     }
 
     addOption() {
