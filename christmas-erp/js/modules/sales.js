@@ -1480,18 +1480,24 @@ class SalesModule {
     renderOptionsTabs() {
         const container = document.getElementById("builder-options-container");
         if (!container) return;
-        
+
+        const fmt = (n) => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(n || 0);
+
         let html = "";
         this.builderOptions.forEach((opt, idx) => {
             const isActive = idx === this.activeOptionIndex;
+            const borderStyle = isActive
+                ? "border-bottom: 3px solid var(--color-blue); background: var(--bg-primary);"
+                : "border-bottom: 3px solid transparent; background: var(--bg-secondary);";
             html += `
-                <div style="position:relative; display:inline-flex; align-items:center; margin-right:8px; margin-bottom:6px;">
-                    <button type="button" class="btn btn-sm ${isActive ? 'btn-primary' : 'btn-secondary'}" 
-                            onclick="salesModule.switchOption(${idx})" style="padding: 4px 10px; font-size:0.75rem; font-weight:600;">
-                        ${opt.name}
+                <div style="position:relative; display:inline-flex; align-items:center; margin-right:6px; margin-bottom:6px;">
+                    <button type="button"
+                            onclick="salesModule.switchOption(${idx})"
+                            style="padding: 5px 12px; font-size:0.78rem; font-weight:${isActive ? '700' : '500'}; cursor:pointer; border:1px solid var(--color-border); border-radius:6px 6px 0 0; color:${isActive ? 'var(--color-blue)' : 'var(--color-text-muted)'}; ${borderStyle} white-space:nowrap;">
+                        ${opt.name}${opt.total ? ' · ' + fmt(opt.total) : ''}
                     </button>
                     ${this.builderOptions.length > 1 ? `
-                        <button type="button" onclick="salesModule.deleteOption(${idx})" 
+                        <button type="button" onclick="salesModule.deleteOption(${idx})"
                                 style="position:absolute; top:-6px; right:-6px; background:var(--color-red); color:white; border:none; border-radius:50%; width:14px; height:14px; font-size:8px; line-height:14px; text-align:center; cursor:pointer; padding:0; font-weight:bold;">
                             &times;
                         </button>
@@ -1499,18 +1505,10 @@ class SalesModule {
                 </div>
             `;
         });
-        html += `
-            <button type="button" class="btn btn-gold btn-sm" onclick="salesModule.addOption()" style="padding: 4px 10px; font-size:0.75rem; font-weight:600; margin-bottom:6px;">
-                + Agregar Opción
-            </button>
-        `;
         container.innerHTML = html;
-        
-        // Actualizar contador visual
+
         const countText = document.getElementById("txt-total-options-count");
-        if (countText) {
-            countText.innerText = this.builderOptions.length;
-        }
+        if (countText) countText.innerText = this.builderOptions.length;
     }
 
     addOption() {
