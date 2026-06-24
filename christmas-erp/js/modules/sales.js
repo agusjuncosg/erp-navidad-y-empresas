@@ -2475,7 +2475,11 @@ class SalesModule {
         const subtotalVenta = (priceUnit * numBoxes);
         const discountAmount = Math.round(subtotalVenta * (discountPercent / 100));
         const totalVenta = subtotalVenta - discountAmount + shippingCost;
-        
+
+        // Mantener opt.total sincronizado para mostrarlo en la tab
+        const activeOpt = this.builderOptions[this.activeOptionIndex];
+        if (activeOpt) activeOpt.total = totalVenta;
+
         const totalCosto = costUnit * numBoxes;
         const totalMargen = totalVenta - totalCosto;
 
@@ -2501,6 +2505,9 @@ class SalesModule {
         
         const marginTotalEl = document.getElementById("txt-total-margin");
         if (marginTotalEl) marginTotalEl.innerText = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(totalMargen);
+
+        // Re-renderizar tabs para reflejar totales actualizados
+        this.renderOptionsTabs();
     }
 
     saveBuilderOrder(orderId = "") {
